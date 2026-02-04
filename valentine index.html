@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>will you be my Koukou valentine my koukou???</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: pink;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      margin-bottom: 40px;
+      color: #b30059;
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    #yes {
+      background-color: #ff4d88;
+      color: white;
+      margin-right: 20px;
+    }
+
+    #no {
+      background-color: white;
+      color: #b30059;
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>will you be my Koukou valentine my koukou???</h1>
+    <button id="yes" onclick="yesClicked()">Yes!!! I love you loulou</button>
+    <button id="no">No I hate you loulou 7elle 3an ayre</button>
+  </div>
+
+  <script>
+    const noButton = document.getElementById("no");
+
+// Track button's current position
+let posX = 0;
+let posY = 0;
+
+noButton.style.position = "absolute";
+noButton.style.left = "50%";
+noButton.style.top = "50%";
+noButton.style.transform = "translate(-50%, -50%)";
+
+noButton.addEventListener("mousemove", (e) => {
+  const moveDistance = 30; // how much the button moves
+  const buttonRect = noButton.getBoundingClientRect();
+
+  // Random small direction for X and Y
+  let deltaX = (Math.random() - 0.5) * moveDistance * 2; 
+  let deltaY = (Math.random() - 0.5) * moveDistance * 2; 
+
+  // Calculate new position
+  posX = buttonRect.left + deltaX;
+  posY = buttonRect.top + deltaY;
+
+  // Keep the button fully inside the viewport
+  posX = Math.max(10, Math.min(window.innerWidth - buttonRect.width - 10, posX));
+  posY = Math.max(10, Math.min(window.innerHeight - buttonRect.height - 10, posY));
+
+  noButton.style.left = posX + "px";
+  noButton.style.top = posY + "px";
+});
+
+
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <div style="
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          background: pink;
+          font-family: Arial;
+          text-align: center;
+        ">
+          <h1 style="color:#b30059;">
+            YEYEYEYYY <br>
+            I can’t wait to be your loulou valentine 😘
+          </h1>
+        </div>
+      `;
+    }
+  </script>
+
+</body>
+</html>
